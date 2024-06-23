@@ -1,6 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { CatsController } from './cats.controller';
-import { CatsService } from './cats.service';
 
 describe('CatsController', () => {
   let controller: CatsController;
@@ -20,7 +19,7 @@ describe('CatsController', () => {
       controllers: [CatsController],
       providers: [
         {
-          provide: CatsService,
+          provide: 'CatsService',
           useValue: catsService,
         },
       ],

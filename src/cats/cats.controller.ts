@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Req, Res } from '@nestjs/common';
+import { Controller, Get, Inject, Post, Req, Res } from '@nestjs/common';
 import { Response, Request } from 'express';
 import { CatsService } from './cats.service';
 
@@ -6,7 +6,10 @@ import { CatsService } from './cats.service';
 export class CatsController {
   private catsService: CatsService;
 
-  constructor(catsService: CatsService) {
+  constructor(
+    @Inject('CatsService')
+    catsService: CatsService,
+  ) {
     this.catsService = catsService;
   }
 

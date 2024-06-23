@@ -2,30 +2,38 @@ import { CatsService } from './cats.service';
 import { Cat } from './cat.model';
 import { databaseConfig } from '../database/sequelize.config';
 import { Sequelize } from 'sequelize-typescript';
+import { CatsServiceImpl } from './cats.service.interface';
+import { Test, TestingModule } from '@nestjs/testing';
+import { SequelizeModule } from '@nestjs/sequelize';
 
 describe('CatsService', () => {
   let service: CatsService;
-  let sequelize: Sequelize;
+  // let sequelize: Sequelize;
 
   beforeEach(async () => {
-    // const module: TestingModule = await Test.createTestingModule({
-    //   imports: [
-    //     SequelizeModule.forRoot(databaseConfig),
-    //     SequelizeModule.forFeature([Cat]),
-    //   ],
-    //   providers: [CatsService],
-    // }).compile();
+    const module: TestingModule = await Test.createTestingModule({
+      imports: [
+        SequelizeModule.forRoot(databaseConfig),
+        SequelizeModule.forFeature([Cat]),
+      ],
+      providers: [
+        {
+          provide: 'CatsService',
+          useClass: CatsServiceImpl,
+        },
+      ],
+    }).compile();
 
-    // service = module.get<CatsService>(CatsService);
-    sequelize = new Sequelize(databaseConfig);
-    sequelize.addModels([Cat]);
-    await sequelize.sync({ force: true });
-    service = new CatsService(Cat);
+    service = module.get<CatsService>('CatsService');
+    // sequelize = new Sequelize(databaseConfig);
+    // sequelize.addModels([Cat]);
+    // await sequelize.sync({ force: true });
+    // service = new CatsServiceImpl(Cat);
   });
 
-  afterEach(async () => {
-    sequelize.close();
-  });
+  // afterEach(async () => {
+  //   sequelize.close();
+  // });
 
   it('should create a cat', async () => {
     const cat = { name: 'Test', age: 1, breed: 'Test' };
