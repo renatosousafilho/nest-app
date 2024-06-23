@@ -1,7 +1,7 @@
 import { CatsService } from './cats.service';
 import { Cat } from './cat.model';
 import { databaseConfig } from '../database/sequelize.config';
-import { Sequelize } from 'sequelize-typescript';
+// import { Sequelize } from 'sequelize-typescript';
 import { CatsServiceImpl } from './cats.service.interface';
 import { Test, TestingModule } from '@nestjs/testing';
 import { SequelizeModule } from '@nestjs/sequelize';

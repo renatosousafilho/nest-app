@@ -10,3 +10,12 @@ Content-Type: application/json
   "age": 3,
   "breed": "Tabby"
 }
+
+### Login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "username": "john",
+  "password": "changeme"
+}

@@ -35,5 +35,4 @@ describe('CatsController', () => {
       { id: 2, name: 'Test 2', age: 2, breed: 'Test 2' },
     ]);
   });
-
 });
