@@ -1,6 +1,7 @@
 import { Controller, Get, Inject, Post, Req, Res } from '@nestjs/common';
 import { Response, Request } from 'express';
 import { CatsService } from './cats.service';
+import { Public } from 'src/decoratos/public.decorator';
 
 @Controller('cats')
 export class CatsController {
@@ -14,6 +15,7 @@ export class CatsController {
   }
 
   @Get()
+  // @Public()
   async findAll() {
     return this.catsService.findAll();
   }
