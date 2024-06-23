@@ -5,4 +5,5 @@ export const databaseConfig: SequelizeModuleOptions = {
   storage: ':memory:',
   autoLoadModels: true,
   synchronize: true,
+  logging: false,
 };

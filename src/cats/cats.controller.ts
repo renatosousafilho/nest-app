@@ -11,9 +11,8 @@ export class CatsController {
   }
 
   @Get()
-  async findAll(@Res() response: Response) {
-    const cats = await this.catsService.findAll();
-    response.status(200).json(cats);
+  async findAll() {
+    return this.catsService.findAll();
   }
 
   @Post()
