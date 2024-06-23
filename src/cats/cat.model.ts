@@ -10,4 +10,4 @@ export class Cat extends Model {
 
   @Column
   breed: string;
-};
+}
